@@ -1,3 +1,14 @@
-import * as plugins from './smartpuppeteer.plugins';
+import puppeteer from 'puppeteer';
 
-export let standardExport = 'Hi there! :) This is an exported string';
+export const getEnvAwareBrowserInstance = async (): Promise<puppeteer.Browser> => {
+  let chromeArgs: string[] = [];
+  if (process.env.CI) {
+    chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
+  }
+  const headlessBrowser = await puppeteer.launch({
+    args: chromeArgs
+  });
+  return headlessBrowser;
+};
+
+export { puppeteer };

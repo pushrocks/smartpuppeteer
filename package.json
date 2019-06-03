@@ -20,7 +20,10 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/puppeteer": "^1.12.4",
+    "puppeteer": "^1.17.0"
+  },
   "files": [
     "ts/*",
     "ts_web/*",
