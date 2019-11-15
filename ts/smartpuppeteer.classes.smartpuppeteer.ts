@@ -20,7 +20,7 @@ export const getEnvAwareBrowserInstance = async (
     chromeArgs = chromeArgs.concat([
       '--no-sandbox',
       '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage'
+      // '--disable-dev-shm-usage'
     ]);
   }
 
