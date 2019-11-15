@@ -32,7 +32,9 @@ export const getEnvAwareBrowserInstance = async (
     });
   } else {
     console.log('Detected WSL. Using chromium.');
-    headlessBrowser = await plugins.puppeteer.launch({executablePath: '/usr/bin/chromium-browser'});
+    headlessBrowser = await plugins.puppeteer.launch({
+      executablePath: '/usr/bin/chromium-browser'
+    });
   }
 
   return headlessBrowser;
