@@ -1,25 +1,9 @@
-import puppeteer from 'puppeteer';
+// module exports
 
-export interface IEnvAwareOptions {
-  forceNoSandbox?: boolean;
-}
+export * from './smartpuppeteer.classes.smartpuppeteer';
 
-export const getEnvAwareBrowserInstance = async (optionsArg: IEnvAwareOptions = {}): Promise<puppeteer.Browser> => {
-  const options: IEnvAwareOptions = {
-    ...{
-      forceNoSandbox: false
-    },
-    ...optionsArg
-  }
-  
-  let chromeArgs: string[] = [];
-  if (process.env.CI || options.forceNoSandbox) {
-    chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
-  }
-  const headlessBrowser = await puppeteer.launch({
-    args: chromeArgs
-  });
-  return headlessBrowser;
-};
-
+// direct exports
+import { puppeteer } from './smartpuppeteer.plugins';
 export { puppeteer };
+
+

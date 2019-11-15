@@ -21,6 +21,7 @@
     "tslint-config-prettier": "^1.15.0"
   },
   "dependencies": {
+    "@pushrocks/smartenv": "^4.0.8",
     "@types/puppeteer": "^1.20.2",
     "puppeteer": "^2.0.0"
   },
