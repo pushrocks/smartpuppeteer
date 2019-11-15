@@ -17,34 +17,21 @@ export const getEnvAwareBrowserInstance = async (
 
   let chromeArgs: string[] = [];
   if ((process.env.CI || options.forceNoSandbox) && !smartenv.isWsl) {
+    chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
+  } else if (smartenv.isWsl) {
+    console.log('Detected WSL. Using chromium.');
     chromeArgs = chromeArgs.concat([
       '--no-sandbox',
-      '--disable-setuid-sandbox',
-      // '--disable-dev-shm-usage'
+      '--single-process'
     ]);
   }
 
   let headlessBrowser: plugins.puppeteer.Browser;
-  if (!smartenv.isWsl) {
-    // lets get the actual instance
-    console.log('launching puppeteer bundled chrome');
-    headlessBrowser = await plugins.puppeteer.launch({
-      args: chromeArgs
-    });
-  } else {
-    console.log('Detected WSL. Using chromium.');
-    headlessBrowser = await plugins.puppeteer.launch({
-      args: [
-        '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--no-first-run',
-        '--no-sandbox',
-        '--no-zygote',
-        '--single-process'
-      ]
-    });
-  }
+  console.log('launching puppeteer bundled chrome with arguments:');
+  console.log(chromeArgs);
+  headlessBrowser = await plugins.puppeteer.launch({
+    args: chromeArgs
+  });
 
   return headlessBrowser;
 };
