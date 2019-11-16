@@ -1,7 +1,7 @@
 import { expect, tap } from '@pushrocks/tapbundle';
 import * as smartpuppeteer from '../ts/index';
 
-tap.test('first test', async (tools) => {
+tap.test('first test', async tools => {
   const headlessBrowser = await smartpuppeteer.getEnvAwareBrowserInstance({
     forceNoSandbox: true
   });

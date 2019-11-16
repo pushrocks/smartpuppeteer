@@ -20,10 +20,7 @@ export const getEnvAwareBrowserInstance = async (
     chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
   } else if (smartenv.isWsl) {
     console.log('Detected WSL. Using chromium.');
-    chromeArgs = chromeArgs.concat([
-      '--no-sandbox',
-      '--single-process'
-    ]);
+    chromeArgs = chromeArgs.concat(['--no-sandbox', '--single-process']);
   }
 
   let headlessBrowser: plugins.puppeteer.Browser;
