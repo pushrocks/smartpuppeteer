@@ -19,7 +19,7 @@ export const getEnvAwareBrowserInstance = async (
   if ((process.env.CI || options.forceNoSandbox) && !smartenv.isWsl) {
     chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
   } else if (smartenv.isWsl) {
-    console.log('Detected WSL. Using chromium.');
+    console.log('Detected WSL.');
     chromeArgs = chromeArgs.concat(['--no-sandbox', '--single-process']);
   }
 
