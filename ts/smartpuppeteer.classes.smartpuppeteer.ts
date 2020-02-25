@@ -16,7 +16,7 @@ export const getEnvAwareBrowserInstance = async (
   };
 
   let chromeArgs: string[] = [];
-  if ((process.env.CI || options.forceNoSandbox) && !smartenv.isWsl) {
+  if ((process.env.CI || options.forceNoSandbox || plugins.os.userInfo().username === 'root') && !smartenv.isWsl) {
     chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
   } else if (smartenv.isWsl) {
     console.log('Detected WSL.');

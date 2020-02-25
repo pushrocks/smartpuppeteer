@@ -15,16 +15,16 @@
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.17",
     "@gitzone/tstest": "^1.0.28",
-    "@pushrocks/tapbundle": "^3.0.13",
-    "@types/node": "^12.12.7",
-    "tslint": "^5.20.1",
+    "@pushrocks/tapbundle": "^3.2.0",
+    "@types/node": "^13.7.4",
+    "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.15.0"
   },
   "dependencies": {
     "@pushrocks/smartdelay": "^2.0.6",
     "@pushrocks/smartenv": "^4.0.8",
-    "@types/puppeteer": "^1.20.2",
-    "puppeteer": "^2.0.0"
+    "@types/puppeteer": "^2.0.0",
+    "puppeteer": "^2.1.1"
   },
   "files": [
     "ts/**/*",
