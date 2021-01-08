@@ -28,6 +28,7 @@ export class IncognitoBrowser {
    */
   public async stop() {
     this.status = 'stopped';
+    await this.browser.close();
   }
 
   public async getNewIncognitoContext(): Promise<plugins.puppeteer.BrowserContext> {
