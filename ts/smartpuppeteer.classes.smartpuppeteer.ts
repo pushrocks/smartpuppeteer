@@ -16,11 +16,8 @@ export const getEnvAwareBrowserInstance = async (
   };
 
   let chromeArgs: string[] = [];
-  if ((process.env.CI || options.forceNoSandbox || plugins.os.userInfo().username === 'root') && !smartenv.isWsl) {
+  if ((process.env.CI || options.forceNoSandbox || plugins.os.userInfo().username === 'root')) {
     chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
-  } else if (smartenv.isWsl) {
-    console.log('Detected WSL.');
-    chromeArgs = chromeArgs.concat(['--no-sandbox', '--single-process']);
   }
 
   let headlessBrowser: plugins.puppeteer.Browser;
