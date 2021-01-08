@@ -10,13 +10,13 @@ export const getEnvAwareBrowserInstance = async (
   const smartenv = new plugins.smartenv.Smartenv();
   const options: IEnvAwareOptions = {
     ...{
-      forceNoSandbox: false
+      forceNoSandbox: false,
     },
-    ...optionsArg
+    ...optionsArg,
   };
 
   let chromeArgs: string[] = [];
-  if ((process.env.CI || options.forceNoSandbox || plugins.os.userInfo().username === 'root')) {
+  if (process.env.CI || options.forceNoSandbox || plugins.os.userInfo().username === 'root') {
     chromeArgs = chromeArgs.concat(['--no-sandbox', '--disable-setuid-sandbox']);
   }
 
@@ -24,7 +24,7 @@ export const getEnvAwareBrowserInstance = async (
   console.log('launching puppeteer bundled chrome with arguments:');
   console.log(chromeArgs);
   headlessBrowser = await plugins.puppeteer.launch({
-    args: chromeArgs
+    args: chromeArgs,
   });
 
   return headlessBrowser;

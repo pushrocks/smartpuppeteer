@@ -5,9 +5,7 @@ export class IncognitoBrowser {
   public status: 'started' | 'stopped' = 'stopped';
   public browser: plugins.puppeteer.Browser;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   /**
    * starts the IncognitoBrowser
@@ -15,14 +13,14 @@ export class IncognitoBrowser {
   public async start() {
     this.status = 'started';
     this.browser = await getEnvAwareBrowserInstance();
-    this.browser.addListener('disconnected', async eventArg => {
+    this.browser.addListener('disconnected', async (eventArg) => {
       try {
         this.browser.removeAllListeners();
-      } catch(err) {}
+      } catch (err) {}
       if (this.status === 'started') {
         this.browser = await getEnvAwareBrowserInstance();
       }
-    })
+    });
   }
 
   /**
