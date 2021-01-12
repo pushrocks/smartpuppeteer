@@ -31,6 +31,14 @@ export class IncognitoBrowser {
     await this.browser.close();
   }
 
+  /**
+   * rotate
+   */
+  public async rotateBrowser () {
+    this.browser.close().catch();
+    this.browser = await getEnvAwareBrowserInstance();
+  }
+
   public async getNewIncognitoContext(): Promise<plugins.puppeteer.BrowserContext> {
     if (this.browser) {
       return this.browser.createIncognitoBrowserContext();
