@@ -25,6 +25,7 @@ export const getEnvAwareBrowserInstance = async (
   console.log(chromeArgs);
   headlessBrowser = await plugins.puppeteer.launch({
     args: chromeArgs,
+    pipe: true
   });
 
   return headlessBrowser;
